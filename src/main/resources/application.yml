@@ -1,0 +1,34 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: spring-boot-keycloak-security
+
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/postgres
+    username: postgres
+    password: root
+  jpa:
+    show-sql: true
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect
+    hibernate:
+      ddl-auto: update
+
+keycloak:
+  realm: employee-service
+  auth-server-url: http://localhost:8080
+  ssl-required: external
+  resource: spring-keycloak-client
+  public-client: true
+  bearer-only: true
+  credentials:
+    secret: Client-Secret
+    username: YOUR_REALM_ADMIN_USERNAME
+    password: Your_REALM_ADMIN_PASSWORD
+    provider: secret
+
+
